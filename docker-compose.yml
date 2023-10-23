@@ -43,6 +43,20 @@ services:
         networks:
             - laravel
 
+    #phpmyadmin
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: phpmyadmin
+        links:
+            - db
+        restart: always
+        environment:
+            - PMA_ARBITRARY=1
+        ports:
+            - 8899:80
+        networks:
+            - laravel
+    
     # queue
     queue:
         image: especializati/laravel9-app
